@@ -27,4 +27,9 @@ public class BotController {
         response.setResponse(res);
         return response;
     }
+
+    @RequestMapping(value = "/",method = RequestMethod.POST)
+    public void creatTeam() {
+        System.out.println("received");
+    }
 }
