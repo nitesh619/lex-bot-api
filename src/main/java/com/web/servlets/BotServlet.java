@@ -2,15 +2,15 @@ package com.web.servlets;
 
 import com.github.seratch.jslack.app_backend.events.EventsDispatcher;
 import com.github.seratch.jslack.app_backend.events.servlet.SlackEventsApiServlet;
-import com.web.handlers.IBotMessageHandler;
+import com.web.handlers.BotMessageHandler;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class IBotServlet extends SlackEventsApiServlet {
+public class BotServlet extends SlackEventsApiServlet {
 
     @Override
     protected void setupDispatcher(EventsDispatcher eventsDispatcher) {
-        eventsDispatcher.register(new IBotMessageHandler());
+        eventsDispatcher.register(new BotMessageHandler());
     }
 
     @Override

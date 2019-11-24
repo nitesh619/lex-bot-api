@@ -14,7 +14,7 @@ public class User {
     @Id
     @GeneratedValue
     int id;
-    String name;
-    String email;
-    String phone;
+    String requestText;
+    String replyText;
+    String userName;
 }

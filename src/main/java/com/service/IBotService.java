@@ -4,5 +4,5 @@ import com.request.BotTextRequest;
 
 public interface IBotService {
 
-    String sendRequestToLex(BotTextRequest request);
+    String forwardMessageToLex(BotTextRequest request);
 }

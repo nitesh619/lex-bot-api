@@ -13,16 +13,18 @@ import org.springframework.stereotype.Service;
 public class BotServiceImpl implements IBotService {
 
     @Autowired
-    private IUserDao teamDao;
+    private IUserDao userDao;
+
+    private AmazonLexRuntime lexClient = AmazonLexRuntimeClientBuilder.standard()
+            .withRegion("us-east-1")
+            .build();
 
 
     @Override
-    public String sendRequestToLex(BotTextRequest request) {
-        AmazonLexRuntime lexClient = AmazonLexRuntimeClientBuilder.standard()
-                .withRegion("us-east-1")
-                .build();
+    public String forwardMessageToLex(BotTextRequest request) {
         PostTextRequest textRequest = createRequest();
         textRequest.setInputText(request.getInputText());
+        textRequest.setUserId(request.getUserId());
         PostTextResult textResult = lexClient.postText(textRequest);
         return textResult.getMessage();
     }
@@ -31,7 +33,6 @@ public class BotServiceImpl implements IBotService {
         PostTextRequest textRequest = new PostTextRequest();
         textRequest.setBotName("LEXBOT");
         textRequest.setBotAlias("lexdoit");
-        textRequest.setUserId("njain");
         return textRequest;
     }
 }

@@ -21,7 +21,7 @@ public class BotController {
     public ServiceResponse<BotResponse> createTeam(@RequestBody BotTextRequest request) {
         BotResponse res = new BotResponse();
 
-        String lexResponse = botService.sendRequestToLex(request);
+        String lexResponse = botService.forwardMessageToLex(request);
         res.setResponseText(lexResponse);
         ServiceResponse<BotResponse> response = new ServiceResponse<>();
         response.setResponse(res);
